@@ -25,10 +25,12 @@ namespace WaySpot.Controllers
         [HttpGet]
         public ActionResult GetHoldDate()
         {
-            var today = DateTime.Now;
-            var holdObjects = db.Holds.ToList().Where(e => e.HoldDateTime.Date == today.Date);
-
-            return Json(new { data = holdObjects }, JsonRequestBehavior.AllowGet);
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo estZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime estTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, estZone);
+            var holdObjects = db.Holds.ToList().Where(e => e.HoldDateTime.Date == estTime.Date);
+            string estTimeString = estTime.ToString();
+            return Json(new { data = holdObjects, estTimeString }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Holds/Details/5
