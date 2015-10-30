@@ -65,7 +65,7 @@ namespace WaySpot.Controllers
             {
                 db.Holds.Add(hold);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(hold);

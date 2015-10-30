@@ -1,18 +1,19 @@
 ﻿@model IEnumerable<WaySpot.Models.Hold>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
-<h2>WaySpot!</h2>
 <h4 id="estTime"></h4>
 <div id="statusIndicator">
-    <div hidden id="taken"><img src="~/Content/red.jpg" /><br />Taken</div>
+    <div hidden id="taken"><img src="~/Content/red.jpg" /><p><strong>The spot is currently TAKEN by <span id="person"></span>.</strong></p></div>
     <div hidden id="free">
-<img src="~/Content/green.jpg" /><br />Free</div>
+        <img src="~/Content/green.jpg" /><br />Free
+    </div>
 </div>
 
-<div class="">
+<div class="panel panel-default">
+    <div class="panel-heading">Reservation History</div>
     <table class="table">
         <tr>
             <th>
@@ -42,15 +43,15 @@
         }
 
     </table>
+    <div class="panel-footer">
+        @Html.ActionLink("Create New Reservation", "Create", "Holds")
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Create New", "Create", "Holds")
-</p>
 
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
-            
+
             // TODO: Ajax stubbed out to pass objects to controller to be parsed into workable DAL objects.  More work to be done here.
             $.ajax({
                 type: 'GET',
@@ -60,6 +61,7 @@
                 success: function (data) {
                     var holds = data;
                     if (holds.data.length > 0) {
+                        $('#person').html(holds.data[0].Person);
                         $('#taken').show();
                         $('#free').hide();
                     } else {
@@ -68,7 +70,7 @@
                     }
                     $('#estTime').html(data.estTimeString);
                     console.log(holds.data.length);
-                    //console.log(data);
+                    console.log(data);
                 },
                 error: function (xhr, ajaxOptions, error) {
                     alert(xhr.status);
