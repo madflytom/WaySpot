@@ -1,0 +1,42 @@
+﻿@model WaySpot.Models.Hold
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hold</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Person)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoldDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoldDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HoldID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
