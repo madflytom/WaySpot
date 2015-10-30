@@ -21,6 +21,16 @@ namespace WaySpot.Controllers
             return View(db.Holds.ToList());
         }
 
+        // GET: Hold for date
+        [HttpGet]
+        public ActionResult GetHoldDate()
+        {
+            var today = DateTime.Now;
+            var holdObjects = db.Holds.ToList().Where(e => e.HoldDateTime.Date == today.Date);
+
+            return Json(new { data = holdObjects }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Holds/Details/5
         public ActionResult Details(int? id)
         {
