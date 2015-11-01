@@ -54,14 +54,7 @@ namespace WaySpot.Controllers
             return View();
         }
 
-        // GET: Holds/Create/dateTime  - if the green "free" button is pushed on front end, this one is called with current datetime added.
-        public ActionResult CreateNow()
-        {
-            DateTime today = DateTime.Now;
-            Hold newhold = new Hold();
-            newhold.HoldDateTime = today;
-            return View("Create", newhold);
-        }
+        
 
         // POST: Holds/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

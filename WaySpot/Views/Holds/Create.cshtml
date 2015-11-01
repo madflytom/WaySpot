@@ -55,7 +55,8 @@
     
     <script>
         $(function () { // will trigger when the document is ready
-            $('.datepicker').datepicker(); //Initialise any date pickers
+            $('.datepicker').datepicker().datepicker("setDate", new Date()); //Initialise any date pickers
+            $('#ui-datepicker-div').css('display', 'none');  // hides calendar (jquery bug)
         });
     </script>
 }
