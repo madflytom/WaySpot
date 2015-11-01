@@ -8,7 +8,7 @@
 <div id="statusIndicator">
     <div hidden id="taken"><img src="~/Content/red.jpg" /><p><strong>The spot is currently TAKEN by <span id="person"></span>.</strong></p></div>
     <div hidden id="free">
-        <img src="~/Content/green.jpg" /><br />Free
+        <a href=""><img src="~/Content/green.jpg" /></a><p><strong>The spot is free!</strong></p>
     </div>
 </div>
 
@@ -55,7 +55,7 @@
             // TODO: Ajax stubbed out to pass objects to controller to be parsed into workable DAL objects.  More work to be done here.
             $.ajax({
                 type: 'GET',
-                url: 'http://wayspot.azurewebsites.net/Holds/GetHoldDate/',
+                url: '/Holds/GetHoldDate/',
                 dataType: 'json',
                 data: {},
                 success: function (data) {
