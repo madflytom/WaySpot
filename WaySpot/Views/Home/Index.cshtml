@@ -8,7 +8,7 @@
 <div id="statusIndicator">
     <div hidden id="taken"><img src="~/Content/red.jpg" /><p><strong>The spot is currently TAKEN by <span id="person"></span>.</strong></p></div>
     <div hidden id="free">
-        <a href=""><img src="~/Content/green.jpg" /></a><p><strong>The spot is free!</strong></p>
+        <a href="@Url.Action("CreateNow","Holds")"><img src="~/Content/green.jpg" /></a><p><strong>The spot is free!  Press the green button to book it now.</strong></p>
     </div>
 </div>
 
